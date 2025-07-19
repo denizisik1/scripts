@@ -1,0 +1,56 @@
+<!-- Put this in the base file so that is available everywhere -->
+<script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.58/darkreader.min.js"></script>
+
+<!-- General purpose js code to make it work. Keep in mind this might require bootstrap possibly. -->
+<!-- Also add another one with not quite dark more but makes things mild grey instead of true white. -->
+<script>
+    const toggleButton = document.getElementById('darkThemeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    let isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+
+    function enableDarkMode() {
+        DarkReader.enable({
+            brightness: 100,
+            contrast: 90,
+            sepia: 10
+        });
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('darkMode', 'enabled');
+    }
+
+    function disableDarkMode() {
+        DarkReader.disable();
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('darkMode', 'disabled');
+    }
+
+    if (isDarkMode) {
+        enableDarkMode();
+    }
+
+    toggleButton.addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        if (isDarkMode) {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+    });
+</script>
+
+<!-- And this is the navbar element. It should be wrapped inside a <ul> obviously. -->
+<li class="nav-item">
+    <a
+        id="darkThemeToggle"
+        class="nav-link waves-effect waves-dark"
+        href="javascript:void(0);"
+        data-toggle="tooltip"
+        title="Dark Mode"
+        data-original-title="Dark Mode"
+    >
+        <i id="themeIcon" class="fas fa-moon"></i>
+    </a>
+</li>
