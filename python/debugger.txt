@@ -1,0 +1,22 @@
+Insert this line in your code where you want to pause execution:
+
+import pdb; pdb.set_trace()
+
+Basic Commands Once Inside pdb
+Command	Meaning
+n	Next line (step over function calls)
+s	Step into function calls
+c	Continue until next breakpoint
+q	Quit debugger
+l	List source code around current line
+p <expr>	Print value of expression
+pp <expr>	Pretty-print expression
+b <lineno>	Set breakpoint at line number
+b <filename>:<lineno>	Set breakpoint in another file
+cl	Clear all breakpoints
+! <code>	Run arbitrary Python code
+args	Show arguments to current function
+where or bt	Show stack trace
+
+Running a script directly with pdb:
+python -m pdb your_script.py
