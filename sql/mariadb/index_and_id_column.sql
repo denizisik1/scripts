@@ -1,16 +1,13 @@
 -- Use BTREE for all things, hash etc. require some additional setup I think, refer to documentation.
 
--- This is how you add combination index, remember the programs searching should also do in order...
-# For example search CLIENTID and RECDATE not RECDATE and CLIENTID.
-ALTER TABLE `olci_diagnostic`
-ADD INDEX `idx_clientid_recdate` (`CLIENTID`, `RECDATE`) USING BTREE;
+-- Keep in mind: SQL Databases will only use the index (therefore speed up the query) if your where clause includes the leading(first) column of the index.
 
--- Another Example.
-CREATE INDEX idx_imei_and_created_at
-ON olci_device_log_packet_arac (imei, created_at DESC)
+-- This is how you add combination index, remember the programs searching should also do in order...
+CREATE INDEX idx_loggedat_imei_tripstatus
+ON olci_teltonika_parsed_data_log (logged_at DESC, imei, trip_status)
 USING BTREE;
 
--- Explicit Index Type Decleration
-ALTER TABLE olci_cimtas_logs ADD INDEX idx_imei (imei) USING BTREE;
-
--- SQL Databases will only use the index (therefore speed up the query) if your where clause includes the leading(first) column of the index.
+-- If it is just one, the example would look like:
+CREATE INDEX idx_loggedat
+ON olci_teltonika_parsed_data_log (logged_at DESC)
+USING BTREE;
