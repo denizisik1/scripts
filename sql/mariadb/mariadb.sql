@@ -15,6 +15,7 @@ SELECT table_name FROM information_schema.tables WHERE TABLE_SCHEMA='aractakip2'
 SHOW TRIGGERS;
 
 -- Add created_at and updated_at:
+-- I just noticed one column is TIMESTAMP and the other is DATETIME, what's up with that?
 ALTER TABLE t1
 ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
