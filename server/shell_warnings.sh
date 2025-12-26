@@ -1,4 +1,4 @@
-# Warning: Don'u use this on your personal computer since it is not tested well, can have side effects.
+# Warning: For server use only.
 
 # Can be added to the bottom of ~/.bashrc
 # After sourcing write echo 1 to test if it works.

@@ -1,4 +1,5 @@
 # Warning: For use in servers only.
+
 # Directly paste this script into a terminal.
 find /home -type f \
   \( -iname "*.crt" -o -iname "*.pem" -o -iname "*.cer" -o -iname "*.cert" \) \
